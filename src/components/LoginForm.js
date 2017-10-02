@@ -34,6 +34,13 @@ class LoginForm extends Component {
 								value={this.state.username}
 							/>
 						</label>
+						<label>
+							Password:
+							<input
+								type="text"
+								value={this.state.password}
+							/>
+						</label>						
 					</div>	
 				</form>
 			</div>
