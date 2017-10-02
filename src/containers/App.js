@@ -7,6 +7,16 @@ import {
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import fetch from 'isomorphic-fetch'
+import Home from '../components/Home'
+import SignupForm from '../components/SignupForm'
+import LoginForm from '../components/LoginForm'
 
-import Home from './components/Home'
+class App extends Component {
+	render () {
+		return (
+			<LoginForm/>
+		);
+	}
+}
 
+export default App
