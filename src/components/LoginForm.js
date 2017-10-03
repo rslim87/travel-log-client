@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Form, Button, Grid } from 'semantic-ui-react'
 
 class LoginForm extends Component {
 	constructor(){
@@ -6,14 +7,14 @@ class LoginForm extends Component {
 
 		this.state = {
 			username: '',
-			password: ''
+			password: '',
 		}
 	}
 
 	handleChange = event => {
 		this.setState({
-			username: event.target.value,
-			password: event.target.value		
+			username: event.target.username,
+			password: event.target.password,		
 		})
 	}
 
@@ -23,27 +24,32 @@ class LoginForm extends Component {
 
 	render () {
 		return (
-			<div>
+			<Grid centered columns={4} textAlign='center' padded='vertically'>
+				<Grid.Column>
 				<h3>Login</h3>
-				<form onSubmit={this.handleSubmit}>
-					<div>
-						<label>
-							Username:
+					<Form>
+					  <Form.Field>
+					    <label>Username</label>
 							<input
 								type="text"
+								name="username"
 								value={this.state.username}
+								onChange={this.handleChange}
 							/>
-						</label>
-						<label>
-							Password:
-							<input
-								type="text"
-								value={this.state.password}
-							/>
-						</label>						
-					</div>	
-				</form>
-			</div>
+					  </Form.Field>
+					  <Form.Field>
+					    <label>Password</label>
+								<input
+									type="password"
+									name="password"
+									value={this.state.password}
+									onChange={this.handleChange}
+								/>
+					  </Form.Field>
+					  <Button type='submit'>Submit</Button>
+					</Form>				
+				</Grid.Column>
+			</Grid>
 		);
 	}
 }
