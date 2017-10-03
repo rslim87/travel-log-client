@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Form, Button, Grid, Radio } from 'semantic-ui-react'
 
 class SignupForm extends Component {
 	constructor(){
@@ -7,17 +8,24 @@ class SignupForm extends Component {
 		this.state = {
 			username: '',
 			password: '',
-			validPassport: ''
+			email: '',
+			validPassport: true,
 		}
+
+		this.handleOptionChange = this.handleOptionChange.bind(this);
 	}
 
 	handleChange = event => {
 		this.setState({
-			username: event.target.value,
-			password: event.target.value,
-			validPassport: event.target.value
+			[event.target.name]: event.target.value,
 		})
 	}
+
+	handleOptionChange = event => {
+    this.setState({
+      validPassport: event.target.checked
+    });
+  }
 
 	handleSubmit = event => {
 		event.preventDefault();
@@ -25,46 +33,58 @@ class SignupForm extends Component {
 
 	render() {
 		return(
-			<div>
-				<h3>Signup Form</h3>
-				<form onSubmit={this.handleSubmit}>
-					<div>
-						<label>
-							Username:
-							<input 
-								type="text" 
+			<Grid centered columns={4} textAlign='center' padded='vertically'>
+				<Grid.Column>
+				<h3>Signup</h3>
+					<Form onSubmit={this.handleSubmit}>
+					  <Form.Field>
+					    <label>Username</label>
+							<input
+								type="text"
+								name="username"
 								value={this.state.username}
-								onChange={this.handleChange}/>
-							</label>	
-					</div>
-
-					<div>
-						<label>
-							Password:
-							<input 
-								type="password" 
-								name="password" 
-								value={this.state.password}
-								onChange={this.handleChange}/>
-							</label>	
-					</div>
-					
-					<div>
-						<label>
-							Do you have a valid passport?
-							<label>
-								Yes
-								<input type="radio" />
-							</label>
-							<label>	
-								No
-								<input type="radio" />
-							</label>
-						</label>	
-					</div>
-				
-				</form>
-			</div>
+								onChange={this.handleChange}
+							/>
+					  </Form.Field>
+					  <Form.Field>
+					    <label>Email</label>
+								<input
+									type="email"
+									name="email"
+									value={this.state.email}
+									onChange={this.handleChange}
+								/>
+					  </Form.Field>
+					  <Form.Field>
+					    <label>Password</label>
+								<input
+									type="password"
+									name="password"
+									value={this.state.password}
+									onChange={this.handleChange}
+								/>
+					  </Form.Field>
+					  <label>Do you have a valid passport?</label>
+		        <Form.Field>
+		          <Radio
+		            label='true'
+		            value={true}
+		            checked={this.state.validPassport === true}
+		            onChange={this.handleOptionChange}
+		          />
+		        </Form.Field>
+		        <Form.Field>
+		          <Radio
+		            label='false'
+		            value={false}
+		            checked={this.state.validPassport === false}
+		            onChange={this.handleOptionChange}
+		          />
+		        </Form.Field>					  
+					  <Button type='submit'>Submit</Button>
+					</Form>				
+				</Grid.Column>
+			</Grid>
 
 		);
 	}
