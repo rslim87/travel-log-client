@@ -12,7 +12,6 @@ class SignupForm extends Component {
 			validPassport: true,
 		}
 
-		this.handleOptionChange = this.handleOptionChange.bind(this);
 	}
 
 	handleChange = event => {
@@ -20,12 +19,6 @@ class SignupForm extends Component {
 			[event.target.name]: event.target.value,
 		})
 	}
-
-	handleOptionChange = event => {
-    this.setState({
-      validPassport: event.target.checked
-    });
-  }
 
 	handleSubmit = event => {
 		event.preventDefault();

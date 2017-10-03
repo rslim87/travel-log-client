@@ -11,11 +11,12 @@ import Home from '../components/Home'
 import SignupForm from '../components/SignupForm'
 import LoginForm from '../components/LoginForm'
 import MakeLog from '../components/MakeLog'
+import TravelLog from '../components/TravelLog'
 
 class App extends Component {
 	render () {
 		return (
-			<MakeLog/>
+			<TravelLog/>
 		);
 	}
 }
