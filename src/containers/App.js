@@ -10,11 +10,12 @@ import fetch from 'isomorphic-fetch'
 import Home from '../components/Home'
 import SignupForm from '../components/SignupForm'
 import LoginForm from '../components/LoginForm'
+import UserProfile from '../components/UserProfile'
 
 class App extends Component {
 	render () {
 		return (
-			<SignupForm/>
+			<UserProfile/>
 		);
 	}
 }
