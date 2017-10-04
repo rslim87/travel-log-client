@@ -9,7 +9,7 @@ class TravelLog extends Component {
 				<Grid.Column>
 					<h2>City, Country</h2>
 					<p></p>
-					<p>Valid email: true </p>
+					<p>Solo travel:  </p>
 					<p>Month: </p>
 					<p>Year: </p>
 					<Button size="mini">Edit</Button>
