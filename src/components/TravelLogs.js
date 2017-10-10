@@ -8,8 +8,8 @@ class TravelLogs extends Component {
 
 	componentDidMount() {
 		this.props.getLogs()
-
 	}
+
 	render() {
 		return(
 			<Grid centered columns={4} textAlign='center' padded='vertically'>

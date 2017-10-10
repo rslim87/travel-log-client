@@ -5,7 +5,7 @@ import {
   combineReducers
 } from 'redux';
 import thunk from 'redux-thunk';
-import logs from '../reducers/logs';
+import logs from '../reducers/logsReducer';
 
 
 const reducers = combineReducers({

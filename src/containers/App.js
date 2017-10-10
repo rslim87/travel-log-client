@@ -20,8 +20,13 @@ class App extends Component {
 	render () {
 
 		return (
-			<MakeLog />
-		);
+	    <Router>
+	        <div>
+	           <Route exact path="/" component={Home} />
+	           <Route path="/logs" component={TravelLogs} />
+	        </div>
+	    </Router>
+	);
 	}
 }
 
