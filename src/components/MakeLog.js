@@ -12,12 +12,35 @@ class MakeLog extends Component {
 			month: '',
 			year: ''
 		}
+
+
 	}
 
-		handleChange = event => {
+ handleRadio = (event, { value }) => {
+ 	const soloTravel = value === "true" ? true: false
+ 	this.setState({ 
+ 		value,
+ 		soloTravel
+ 	})
+ }
 
-		}
+handleChange = event => {
+  const { name, value } = event.target;
+  this.setState({
+    [name]: value
+  })
+}
 
+handleSubmit = (event) => {
+	event.preventDefault();
+	console.log("save!")
+	console.log(this.state.city)
+	console.log(this.state.country)
+	console.log(this.state.month)
+	console.log(this.state.year)
+	console.log(this.state.soloTravel)
+
+}
 	render(){
 		return (
 		  <Grid centered columns={4} textAlign='center' padded='vertically'>
@@ -61,26 +84,34 @@ class MakeLog extends Component {
 									/>
 						  </Form.Field>		
 						  <label>Solo Travel?</label>
-					        <Form.Field>
-					          <Radio
-					            label='true'
-					            value={true}
-					            checked={this.state.soloTravel === true}
-					            onChange={this.handleOptionChange}
-					          />
-					        </Form.Field>
-					        <Form.Field>
-					          <Radio
-					            label='false'
-					            value={false}
-					            checked={this.state.soloTravel === false}
-					            onChange={this.handleOptionChange}
-					          />
-					        </Form.Field>								  				  			  
-						  <Button type='submit'>Submit</Button>
+				        <Form.Field>
+				          <Radio
+				            label='true'
+				            name='soloTravel'
+				            value='true'
+				            checked={this.state.value === 'true'}
+				            onChange={this.handleRadio}
+				          />
+				        </Form.Field>
+				        <Form.Field>
+				          <Radio
+				            label='false'
+				            name='soloTravel'
+				            value='false'
+				            checked={this.state.value === 'false'}
+				            onChange={this.handleRadio}
+				          />
+				        </Form.Field>										  				  			  
+						  <Button 
+						  	type='submit'
+						  	onClick={this.handleSubmit}>
+						  Submit
+						  </Button>
 						</Form>				
 		    </Grid.Column>
 		  </Grid>
+
+
 		);
 	}
 }  
