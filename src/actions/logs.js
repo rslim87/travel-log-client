@@ -3,7 +3,7 @@
 // ** Action Creators **
 const setLogs = logs => {
 	return {
-		type: 'GET_LOG_SUCCESS',
+		type: 'GET_LOGS',
 		logs
 	}
 }
