@@ -1,16 +1,31 @@
 import React, { Component } from 'react';
-import { Grid } from 'semantic-ui-react'
+import { Grid, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { getLogs } from '../actions/logs'
 import { Link } from 'react-router-dom';
+import TravelLogForm  from './TravelLogForm'
  
 
 
 class TravelLogs extends Component {
+	constructor(props) {
+    super(props);
+
+    this.state = {
+    	showForm: false
+    }
+
+  }
 
 	componentDidMount() {
 		this.props.getLogs()
 	}
+
+	handleClick = (event) => {
+		event.preventDefault();
+		this.setState({showForm: !this.state.showForm})
+	}
+
 
 	render() {
 		return(
@@ -20,7 +35,10 @@ class TravelLogs extends Component {
 					{this.props.logs.map(log => 
 						<p key={log.id}><Link to={`/logs/${log.id}`}>{log.city}</Link></p>
 					)}
-				</Grid.Column>				
+					<Button size="mini" onClick={this.handleClick}>Add a Log</Button>
+					{this.state.showForm && < TravelLogForm / >}		
+					
+				</Grid.Column>		
 			</Grid>	
 		)		
 	}

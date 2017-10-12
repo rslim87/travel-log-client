@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button, Grid, Radio } from 'semantic-ui-react'
 
-class MakeLog extends Component {
+class TravelLogForm extends Component {
 	constructor(){
 		super()
 
@@ -43,7 +43,7 @@ handleSubmit = (event) => {
 }
 	render(){
 		return (
-		  <Grid centered columns={4} textAlign='center' padded='vertically'>
+		  <Grid centered columns={1} textAlign='center' padded='vertically'>
 		    <Grid.Column>
 					<h3>Make a Log</h3>
 						<Form>
@@ -116,4 +116,4 @@ handleSubmit = (event) => {
 	}
 }  
 
-export default MakeLog
+export default TravelLogForm

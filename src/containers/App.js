@@ -10,9 +10,9 @@ import fetch from 'isomorphic-fetch'
 import Home from '../components/Home'
 import SignupForm from '../components/SignupForm'
 import LoginForm from '../components/LoginForm'
-import MakeLog from '../components/MakeLog'
 import TravelLog from '../components/TravelLog'
 import TravelLogs from '../components/TravelLogs'
+import TravelLogForm from '../components/TravelLogForm'
 
 
 class App extends Component {
@@ -25,6 +25,8 @@ class App extends Component {
 	           <Route exact path="/" component={Home} />
 	           <Route exact path="/logs" component={TravelLogs} />
 	           <Route exact path="/logs/:id" component={TravelLog} />
+	          
+
 
 	        </div>
 	    </Router>
