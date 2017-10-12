@@ -16,10 +16,9 @@ class TravelLogs extends Component {
 		return(
 			<Grid centered columns={4} textAlign='center' padded='vertically'>
 				<Grid.Column>
-									<h2>Your Travel Logs</h2>
-								
+					<h2>Your Travel Logs</h2>			
 					{this.props.logs.map(log => 
-						<p><Link key={log.id} to={`/logs/${log.id}`}>{log.city}</Link></p>
+						<p key={log.id}><Link to={`/logs/${log.id}`}>{log.city}</Link></p>
 					)}
 				</Grid.Column>				
 			</Grid>	
