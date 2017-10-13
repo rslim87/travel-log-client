@@ -35,7 +35,7 @@ class TravelLogs extends Component {
 					{this.props.logs.map(log => 
 						<p key={log.id}><Link to={`/logs/${log.id}`}>{log.city}</Link></p>
 					)}
-					<Button size="mini" onClick={this.handleClick}>Add a Log</Button>
+					<Button size="mini" onClick={this.handleClick}>Show Add Log Form</Button>
 					{this.state.showForm && < TravelLogForm / >}		
 					
 				</Grid.Column>		

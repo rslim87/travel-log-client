@@ -3,7 +3,11 @@ export default (state = [], action) => {
 		case 'GET_LOGS':
 			return action.logs;
 
-		case 'ADD_LOG':
+		case 'CREATE_LOG':
+			return [
+			...state,
+			Object.assign({}, action.log)
+			]
 
 		case 'EDIT_LOG':
 

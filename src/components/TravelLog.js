@@ -19,10 +19,7 @@ class TravelLog extends Component {
 					<p>Solo travel: {String(this.props.log.solo_travel)} </p>
 					<p>Month: {this.props.log.month} </p> 
 					<p>Year: {this.props.log.year} </p>
-					<Button size="mini">Edit</Button>
-					<Divider />
-					<p> Video </p>
-					
+					<Button size="mini">Edit</Button>					
 				</Grid.Column>				
 			</Grid>			
 		);
@@ -30,8 +27,6 @@ class TravelLog extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-	console.log(ownProps)
-	console.log(state)
 	return ({
 		log: state.logs.find(log => log.id === +ownProps.match.params.id)
 	})

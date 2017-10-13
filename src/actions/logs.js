@@ -8,6 +8,13 @@ const setLogs = logs => {
 	}
 }
 
+const addLog = log => {
+	return {
+		type: 'CREATE_LOG',
+		log
+	}
+}
+
 
 // ** Asynch Action **		
 export const getLogs = () => {
@@ -18,3 +25,18 @@ export const getLogs = () => {
 	}
 }
 
+export const createLog = (log) => {
+  return dispatch => {
+    return fetch('http://localhost:3001/api/logs', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            log
+        })
+    })
+        .then(response => response.json())
+				.then(log => {dispatch(addLog(log))})
+	};
+};

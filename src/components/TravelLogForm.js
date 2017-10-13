@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Form, Button, Grid, Radio } from 'semantic-ui-react'
+import { createLog } from '../actions/logs'
+
 
 class TravelLogForm extends Component {
 	constructor(){
@@ -8,19 +12,20 @@ class TravelLogForm extends Component {
 		this.state = {
 			city: '',
 			country: '',
-			soloTravel: '',
+			solo_travel: '',
 			month: '',
-			year: ''
+			year: '',
+			user_id: '',
 		}
 
 
 	}
 
  handleRadio = (event, { value }) => {
- 	const soloTravel = value === "true" ? true: false
+ 	const solo_travel = value === "true" ? true: false
  	this.setState({ 
  		value,
- 		soloTravel
+ 		solo_travel
  	})
  }
 
@@ -33,13 +38,7 @@ handleChange = event => {
 
 handleSubmit = (event) => {
 	event.preventDefault();
-	console.log("save!")
-	console.log(this.state.city)
-	console.log(this.state.country)
-	console.log(this.state.month)
-	console.log(this.state.year)
-	console.log(this.state.soloTravel)
-
+	this.props.createLog(this.state);
 }
 	render(){
 		return (
@@ -77,17 +76,26 @@ handleSubmit = (event) => {
 						  <Form.Field>
 						    <label>Year</label>
 									<input
-										type="text"
+										type="number"
 										name="year"
 										value={this.state.year}
 										onChange={this.handleChange}
 									/>
 						  </Form.Field>		
+						  <Form.Field>
+						    <label>User Id</label>
+									<input
+										type="number"
+										name="user_id"
+										value={this.state.user_id}
+										onChange={this.handleChange}
+									/>
+						  </Form.Field>								  
 						  <label>Solo Travel?</label>
 				        <Form.Field>
 				          <Radio
 				            label='true'
-				            name='soloTravel'
+				            name='solo_travel'
 				            value='true'
 				            checked={this.state.value === 'true'}
 				            onChange={this.handleRadio}
@@ -96,7 +104,7 @@ handleSubmit = (event) => {
 				        <Form.Field>
 				          <Radio
 				            label='false'
-				            name='soloTravel'
+				            name='solo_travel'
 				            value='false'
 				            checked={this.state.value === 'false'}
 				            onChange={this.handleRadio}
@@ -116,4 +124,16 @@ handleSubmit = (event) => {
 	}
 }  
 
-export default TravelLogForm
+// function mapDispatchToProps(dispatch) {
+// 	return {
+// 		addLog: log => dispatch(logs.addLog(log))
+// 	}
+// }
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//   	actions: bindActionCreators(actions, dispatch)
+//   }
+// }
+
+export default connect(null, { createLog })(TravelLogForm)
