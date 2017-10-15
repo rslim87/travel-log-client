@@ -5,7 +5,7 @@ import { Form, Button, Grid, Radio } from 'semantic-ui-react'
 import { createLog } from '../actions/logs'
 
 
-class TravelLogForm extends Component {
+class LogForm extends Component {
 	constructor(){
 		super()
 
@@ -29,6 +29,12 @@ class TravelLogForm extends Component {
  	})
  }
 
+componentDidMount() {
+  this.setState({
+      ...this.props.log
+  })
+}
+
 handleChange = event => {
   const { name, value } = event.target;
   this.setState({
@@ -38,13 +44,13 @@ handleChange = event => {
 
 handleSubmit = (event) => {
 	event.preventDefault();
-	this.props.createLog(this.state);
+	this.props.formSubmit(this.state);
 }
 	render(){
 		return (
 		  <Grid centered columns={1} textAlign='center' padded='vertically'>
 		    <Grid.Column>
-					<h3>Make a Log</h3>
+		    		<h2>{this.props.title} Log Form</h2>
 						<Form>
 						  <Form.Field>
 						    <label>City</label>
@@ -111,6 +117,7 @@ handleSubmit = (event) => {
 				          />
 				        </Form.Field>										  				  			  
 						  <Button 
+						  	size="mini"
 						  	type='submit'
 						  	onClick={this.handleSubmit}>
 						  Submit
@@ -124,16 +131,4 @@ handleSubmit = (event) => {
 	}
 }  
 
-// function mapDispatchToProps(dispatch) {
-// 	return {
-// 		addLog: log => dispatch(logs.addLog(log))
-// 	}
-// }
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//   	actions: bindActionCreators(actions, dispatch)
-//   }
-// }
-
-export default connect(null, { createLog })(TravelLogForm)
+export default LogForm

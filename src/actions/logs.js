@@ -1,14 +1,14 @@
 
 
 // ** Action Creators **
-const setLogs = logs => {
+export const setLogs = logs => {
 	return {
 		type: 'GET_LOGS',
 		logs
 	}
 }
 
-const addLog = log => {
+export const addLog = log => {
 	return {
 		type: 'CREATE_LOG',
 		log
@@ -24,6 +24,14 @@ export const getLogs = () => {
 			.then(logs => dispatch(setLogs(logs)))
 	}
 }
+
+// export const getLog = (logId) => {
+//     return dispatch => {
+//         return fetch(`http://localhost:3001/api/logs/${logId}`)
+//             .then(response => response.json())
+//             .then(log => dispatch(setLogs([log])))
+//     };
+// };
 
 export const createLog = (log) => {
   return dispatch => {

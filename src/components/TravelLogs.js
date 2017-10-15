@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Grid, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux';
-import { getLogs } from '../actions/logs'
-import { Link } from 'react-router-dom';
-import TravelLogForm  from './TravelLogForm'
- 
+
+import { Route, Link } from 'react-router-dom';
+import CreateLogForm  from './CreateLogForm'
 
 
 class TravelLogs extends Component {
@@ -16,10 +15,6 @@ class TravelLogs extends Component {
     }
 
   }
-
-	componentDidMount() {
-		this.props.getLogs()
-	}
 
 	handleClick = (event) => {
 		event.preventDefault();
@@ -36,7 +31,7 @@ class TravelLogs extends Component {
 						<p key={log.id}><Link to={`/logs/${log.id}`}>{log.city}</Link></p>
 					)}
 					<Button size="mini" onClick={this.handleClick}>Show Add Log Form</Button>
-					{this.state.showForm && < TravelLogForm / >}		
+					{this.state.showForm && < CreateLogForm / >}		
 					
 				</Grid.Column>		
 			</Grid>	
@@ -47,9 +42,10 @@ class TravelLogs extends Component {
     
 
 const mapStateToProps = (state) => {
+	console.log(state)
 	return ({
 		logs: state.logs
 	})
 }
 
-export default connect(mapStateToProps, { getLogs })(TravelLogs);
+export default connect(mapStateToProps)(TravelLogs);

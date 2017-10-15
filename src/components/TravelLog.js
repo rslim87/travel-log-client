@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
 import { Button, Grid, Divider } from 'semantic-ui-react'
 import { connect } from 'react-redux';
-import { getLogs } from '../actions/logs'
+
 
 class TravelLog extends Component {
+	constructor(props) {
+    super(props);
 
-	componentDidMount() {
-		this.props.getLogs()
+    this.state = {
+    	showForm: false
+    }
+
+  }
+
+  handleClick = (event) => {
+		event.preventDefault();
+		this.setState({showForm: !this.state.showForm})
 	}
 
+
+
 	render() {
-		console.log(this.props.log)
 		return (
 			<Grid centered columns={4} textAlign='center' padded='vertically'>
 				<Grid.Column key={this.props.log.id}>
@@ -19,7 +29,8 @@ class TravelLog extends Component {
 					<p>Solo travel: {String(this.props.log.solo_travel)} </p>
 					<p>Month: {this.props.log.month} </p> 
 					<p>Year: {this.props.log.year} </p>
-					<Button size="mini">Edit</Button>					
+					<Button size="mini" onClick={this.handleClick}>Edit</Button>		
+		
 				</Grid.Column>				
 			</Grid>			
 		);
@@ -27,10 +38,10 @@ class TravelLog extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-	return ({
-		log: state.logs.find(log => log.id === +ownProps.match.params.id)
-	})
+	return {
+		log: state.logs.find(log => log.id === +ownProps.match.params.logId)
+	}
 
 }	
 
-export default connect(mapStateToProps, { getLogs })(TravelLog);
+export default connect(mapStateToProps)(TravelLog);
