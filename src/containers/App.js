@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch, NavLink, Redirect } from 'react
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import fetch from 'isomorphic-fetch'
-import { getLogs } from '../actions/logs'
+
 
 import Home from '../components/Home'
 import SignupForm from '../components/SignupForm'
@@ -14,10 +14,6 @@ import TravelLogs from '../components/TravelLogs'
 
 
 class App extends Component {
-
-	componentDidMount() {
-		this.props.getLogs()
-	}
 
 	render () {
 
@@ -36,11 +32,5 @@ class App extends Component {
 	}
 }
 
-const mapStateToProps = (state) => {
-	console.log(state)
-	return ({
-		logs: state.logs
-	})
-}
 
-export default connect(mapStateToProps, { getLogs })(App);
+export default App;

@@ -10,6 +10,10 @@ export default function logs(state = [], action) {
 			]
 
 		case 'EDIT_LOG':
+			return [
+			...state.filter(log => log.id === !action.log.id),
+			Object.assign({}, action.log)
+			]
 
 		case 'DELETE_LOG':		
 

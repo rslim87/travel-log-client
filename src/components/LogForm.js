@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { Form, Button, Grid, Radio } from 'semantic-ui-react'
-import { createLog } from '../actions/logs'
+
 
 
 class LogForm extends Component {

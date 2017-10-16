@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Grid, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import CreateLogForm  from './CreateLogForm'
+import { getLogs } from '../actions/logs'
 
 
 class TravelLogs extends Component {
@@ -19,6 +20,10 @@ class TravelLogs extends Component {
 	handleClick = (event) => {
 		event.preventDefault();
 		this.setState({showForm: !this.state.showForm})
+	}
+
+	componentDidMount() {
+		this.props.getLogs()
 	}
 
 
@@ -42,10 +47,11 @@ class TravelLogs extends Component {
     
 
 const mapStateToProps = (state) => {
-	console.log(state)
+	debugger;
 	return ({
 		logs: state.logs
 	})
 }
 
-export default connect(mapStateToProps)(TravelLogs);
+
+export default connect(mapStateToProps, { getLogs })(TravelLogs);
