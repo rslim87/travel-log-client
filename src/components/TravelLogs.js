@@ -47,7 +47,6 @@ class TravelLogs extends Component {
     
 
 const mapStateToProps = (state) => {
-	debugger;
 	return ({
 		logs: state.logs
 	})

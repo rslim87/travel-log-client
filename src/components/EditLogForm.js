@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { editLog } from '../actions/logs'
+import { updateLog } from '../actions/logs'
 import LogForm from './LogForm' 
 
 
-const EditLogForm = ({editLog, log, history}) =>{
-	return <LogForm formSubmit={editLog} title="Edit" log={log} history={history}/>
+
+
+const EditLogForm = ({updateLog, log, history}) =>{
+	return <LogForm formSubmit={updateLog} title="Edit" log={log} history={history}/>
 } 
 
 const mapStateToProps = (state, ownProps) => {
@@ -14,4 +16,4 @@ const mapStateToProps = (state, ownProps) => {
 	}
 }	
 
-export default connect(null, { editLog })(EditLogForm)
+export default connect(null, { updateLog })(EditLogForm)
