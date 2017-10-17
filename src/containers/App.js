@@ -10,7 +10,7 @@ import SignupForm from '../components/SignupForm'
 import LoginForm from '../components/LoginForm'
 import TravelLog from '../components/TravelLog'
 import TravelLogs from '../components/TravelLogs'
-
+import NavBar from '../components/NavBar'
 
 
 class App extends Component {
@@ -18,14 +18,17 @@ class App extends Component {
 	render () {
 
 		return (
+			
 	    <Router>
+	    		<div>
+	    			<NavBar />
+		        <Switch>
+		           <Route exact path="/" component={Home} />
+		           <Route exact path="/logs" component={TravelLogs} />
+		           <Route path="/logs/:logId" component={TravelLog} />
 
-	        <Switch>
-	           <Route exact path="/" component={Home} />
-	           <Route exact path="/logs" component={TravelLogs} />
-	           <Route path="/logs/:logId" component={TravelLog} />
-
-	        </Switch>
+		        </Switch>
+	        </div>
 
 	    </Router>
 	);

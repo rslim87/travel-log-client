@@ -32,13 +32,13 @@ export const getLogs = () => {
 	}
 }
 
-export const getLog = (logId) => {
-    return dispatch => {
-        return fetch(`http://localhost:3001/api/logs/${logId}`)
-            .then(response => response.json())
-            .then(log => dispatch(setLogs([log])))
-    };
-};
+// export const getLog = (logId) => {
+//     return dispatch => {
+//         return fetch(`http://localhost:3001/api/logs/${logId}`)
+//             .then(response => response.json())
+//             .then(log => dispatch(setLogs([log])))
+//     };
+// };
 
 export const createLog = (log) => {
   return dispatch => {
@@ -58,7 +58,7 @@ export const createLog = (log) => {
 
 export const updateLog = (log) => {
   return dispatch => {
-    return fetch('http://localhost:3001/api/logs', {
+    return fetch(`http://localhost:3001/api/logs/${log.id}`, {
         method: 'PUT',
         headers: { 
             'Content-Type': 'application/json'
