@@ -5,7 +5,9 @@ import { bindActionCreators } from "redux"
 import * as sessionActions from '../actions/sessionActions';
 
 class Home extends Component { 
+
 	render() {
+		console.log(this.props.logged_in)
   	return (
 	  	<Grid centered columns={4} textAlign='center' padded='vertically'>
 	    <Grid.Column>
@@ -24,7 +26,7 @@ class Home extends Component {
 
 function mapStateToProps(state, ownProps) {
 	console.log(state)
-  return {logged_in: state.session};
+  return {logged_in: state.session.session};
 }
 
 function mapDispatchToProps(dispatch) {
