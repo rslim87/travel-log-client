@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Form, Button, Grid } from 'semantic-ui-react'
+import { connect } from 'react-redux';
+import { loginUser } from '../actions/sessionActions'
+import history from '../history' 
 
 class LoginForm extends Component {
 	constructor(){
@@ -9,18 +12,23 @@ class LoginForm extends Component {
 			username: '',
 			password: '',
 		}
+
+
 	}
 
-	handleChange = event => {
-		this.setState({
-			username: event.target.username,
-			password: event.target.password,		
-		})
-	}
+handleChange = event => {
+  const { name, value } = event.target;
+  this.setState({
+    [name]: value
+  })
+}
 
-	handleSubmit = event => {
-		event.preventDefault();
-	}
+handleSubmit = event => {
+	event.preventDefault();
+	console.log(this.state)
+	this.props.loginUser(this.state)
+	history.push('/')
+}
 
 	render () {
 		return (
@@ -46,7 +54,11 @@ class LoginForm extends Component {
 									onChange={this.handleChange}
 								/>
 					  </Form.Field>
-					  <Button type='submit'>Submit</Button>
+					  <Button 
+					  	type='submit'
+					  	onClick={this.handleSubmit}>
+					  	Submit
+					  </Button>
 					</Form>				
 				</Grid.Column>
 			</Grid>
@@ -54,4 +66,4 @@ class LoginForm extends Component {
 	}
 }
 
-export default LoginForm
+export default connect(null, { loginUser })(LoginForm)

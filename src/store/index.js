@@ -5,10 +5,14 @@ import {
 } from 'redux';
 import thunk from 'redux-thunk';
 import logs from '../reducers/logsReducer';
+import session from '../reducers/sessionReducer';
+import users from '../reducers/userReducer'
 
 
 const reducers = combineReducers({
-	logs: logs
+	logs: logs,
+	session,
+	users: users,
 
 });
 

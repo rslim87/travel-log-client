@@ -22,7 +22,7 @@ class TravelLogs extends Component {
 		this.setState({showForm: !this.state.showForm})
 	}
 
-	componentDidMount() {
+	componentWillMount() {
 		this.props.getLogs()
 	}
 
@@ -47,6 +47,7 @@ class TravelLogs extends Component {
     
 
 const mapStateToProps = (state) => {
+
 	return ({
 		logs: state.logs
 	})

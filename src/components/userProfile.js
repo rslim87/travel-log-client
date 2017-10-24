@@ -1,21 +1,36 @@
 import React, { Component } from 'react';
-import { Button, Grid } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import {getUsers} from '../actions/users';
 
 
 class UserProfile extends Component {
+
+	componentDidMount() {
+		this.props.getUsers()
+	}
+
 	render() {
+		console.log(this.props.user)
+
 		return (
 			<Grid centered columns={4} textAlign='center' padded='vertically'>
-				<Grid.Column>
-					<p>Username:</p>
-					<p>email:</p>
-					<p>Valid email: true </p>
-
-					<Button size="mini">Edit</Button>
-				</Grid.Column>
+				{this.props.user &&
+					<Grid.Column>
+						<p>Username: {this.props.user.username}</p>
+						<p>email: {this.props.user.email}</p>
+						<p>Valid passport: {String(this.props.user.valid_passport)} </p>
+					</Grid.Column>
+					}
 			</Grid>			
 		);
 	}
 }
 
-export default UserProfile;
+const mapStateToProps = (state, ownProps) => {
+	return {
+		user: state.users.find(user => user.id === +ownProps.match.params.userId)
+	}
+}
+
+export default connect(mapStateToProps, {getUsers})(UserProfile);

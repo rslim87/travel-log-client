@@ -1,4 +1,4 @@
-
+import logApi from '../api/LogsApi';
 
 // ** Action Creators **
 export const setLogs = logs => {
@@ -24,50 +24,40 @@ export const editLog = log => {
 
 
 // ** Asynch Action **		
+// make async call to api, handle promise, dispatch action when promise is resolved
 export const getLogs = () => {
 	return dispatch => {
-		return fetch('http://localhost:3001/api/logs')
-			.then(response => response.json())
-			.then(logs => dispatch(setLogs(logs)))
+		return logApi.getLogs().then(logs => {
+      dispatch(setLogs(logs));
+    }).catch(error => {
+      throw(error);
+    });
 	}
 }
 
-// export const getLog = (logId) => {
-//     return dispatch => {
-//         return fetch(`http://localhost:3001/api/logs/${logId}`)
-//             .then(response => response.json())
-//             .then(log => dispatch(setLogs([log])))
-//     };
-// };
-
 export const createLog = (log) => {
   return dispatch => {
-    return fetch('http://localhost:3001/api/logs', {
-        method: 'POST', 
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            log
-        })
-    })
-        .then(response => response.json())
-				.then(log => {dispatch(addLog(log))})
+    return logApi.createLog(log)
+			.then(log => {dispatch(addLog(log))})
 	};
 };
 
 export const updateLog = (log) => {
   return dispatch => {
-    return fetch(`http://localhost:3001/api/logs/${log.id}`, {
-        method: 'PUT',
-        headers: { 
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ 
-            log
-        })
-    })
-    .then(response => response.json())
-    .then(log => {dispatch(editLog(log))})
+		return logApi.createLog(log)
+    	.then(log => {dispatch(editLog(log))})
   };
 };
+
+
+// export function deleteLog(log) {
+//   return dispatch => {
+//     return logApi.deleteLog(log).then(() => {
+//       console.log(`Deleted ${log.id}`)
+//       dispatch(deleteLog(log));
+//       return;
+//     }).catch(error => {
+//       throw(error);
+//     })
+//   }
+// }

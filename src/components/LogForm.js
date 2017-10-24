@@ -10,7 +10,7 @@ class LogForm extends Component {
 		this.state = {
 			city: '',
 			country: '',
-			solo_travel: '',
+			solo_travel: true,
 			month: '',
 			year: '',
 			user_id: '',
