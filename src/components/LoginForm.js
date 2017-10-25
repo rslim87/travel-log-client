@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Button, Grid } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { loginUser } from '../actions/sessionActions'
-// import history from '../history' 
+import { createHashHistory } from 'history';
 
 class LoginForm extends Component {
 	constructor(){
@@ -13,6 +13,7 @@ class LoginForm extends Component {
 			password: '',
 		}
 
+	const history = createHashHistory()
 
 	}
 
@@ -27,7 +28,7 @@ handleSubmit = event => {
 	event.preventDefault();
 	console.log(this.state)
 	this.props.loginUser(this.state)
-	// history.push('/')
+	this.props.history.push('/')
 }
 
 	render () {

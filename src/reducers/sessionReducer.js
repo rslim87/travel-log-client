@@ -1,4 +1,3 @@
-// import history from '../history' 
 
 function sessionReducer(state = {session: !!sessionStorage.jwt}, action) {
   switch(action.type){
@@ -6,7 +5,7 @@ function sessionReducer(state = {session: !!sessionStorage.jwt}, action) {
     	// history.push('/')
       return {session: !!sessionStorage.jwt}
     case 'LOGOUT_SUCCESS':
-    	// history.push('/')
+
       return {session: !!sessionStorage.jwt}
     default: 
      	return state

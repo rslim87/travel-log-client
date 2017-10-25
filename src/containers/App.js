@@ -12,10 +12,10 @@ import UserProfile from '../components/UserProfile';
 import auth from '../auth/authenticator';
 
 
-class App extends Component {
+const App = () => {
 
 
-	render () {
+
 		return (
 			
 	    <Router>
@@ -30,13 +30,7 @@ class App extends Component {
 								    <TravelLogs/>
 								  )
 								)}/>
-								<Route  path="/logs/:logId" render={() => (
-								  !auth.loggedIn() ? (
-								    <Redirect to="/login"/>
-								  ) : (
-								    <TravelLog/>
-								  )
-								)}/>
+								<Route  path="/logs/:logId" component={TravelLog}/>
 								<Route  path="/users/:userId" render={() => (
 								  !auth.loggedIn() ? (
 								    <Redirect to="/login"/>
@@ -54,7 +48,7 @@ class App extends Component {
 	);
 
 	
-	}
+	
 }
 
 
