@@ -10,7 +10,8 @@ class TravelLog extends Component {
     super(props);
 
     this.state = {
-    	showForm: false
+    	showForm: false,
+
     }
 
   }
@@ -23,6 +24,7 @@ class TravelLog extends Component {
 	componentWillMount() {
 		this.props.getLogs()
 	}
+
 
 
 

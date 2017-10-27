@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from 'semantic-ui-react'
+import { Grid, Button } from 'semantic-ui-react'
 
 const Log = ({log}) => {
 	return (
@@ -9,6 +9,7 @@ const Log = ({log}) => {
 		<p>Solo travel: {String(log.solo_travel)} </p>
 		<p>Month: {log.month} </p> 
 		<p>Year: {log.year} </p>
+		
 		</div>
 
 	);

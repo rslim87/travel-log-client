@@ -8,6 +8,7 @@ export default function logs(state = [], action) {
 			...state,
 			Object.assign({}, action.log)
 			]
+		
 
 		case 'EDIT_LOG':
 			return [

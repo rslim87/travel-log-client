@@ -6,13 +6,15 @@ import { Link } from 'react-router-dom';
 import CreateLogForm  from './CreateLogForm'
 import { getLogs } from '../actions/logs'
 import Logs from './Logs'
+import Like from './Like'
 
 class TravelLogs extends Component {
 	constructor(props) {
     super(props);
 
     this.state = {
-    	showForm: false
+    	showForm: false, 
+ 
     }
 
   }
@@ -21,6 +23,7 @@ class TravelLogs extends Component {
 		event.preventDefault();
 		this.setState({showForm: !this.state.showForm})
 	}
+
 
 	componentWillMount() {
 		this.props.getLogs()
@@ -34,7 +37,11 @@ class TravelLogs extends Component {
 				<Grid.Column>
 					<h2>Your Travel Logs</h2>			
 					{this.props.logs.map(log => 
-						<Logs log={log} />
+						<div>
+						<Logs log={log}/>
+						<Like />
+
+						</div>
 					)}
 					<Button size="mini" onClick={this.handleClick}>Show Add Log Form</Button>
 					{this.state.showForm && < CreateLogForm / >}		
